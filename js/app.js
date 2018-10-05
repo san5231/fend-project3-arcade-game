@@ -24,6 +24,59 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+// Hero class
+class Hero{
+	constructor() {
+	//properties
+	this.step = 101;
+	this.jump = 83;
+	this.startX = this.step * 2;
+	this.startY = this.step * 4 - 30;
+	this.x = this.startX; 
+	this.y = this.startY;
+	this.sprite = 'images/char-boy.png';
+	}
+	//methods
+	update(){
+
+	}
+
+	render(){
+		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+	}
+	
+	
+	handleInput(input){
+		switch(input) {
+			case 'left':
+				if (this.x > 0) {
+					this.x -= this.step;
+				}
+				break;
+			case 'right':
+				if (this.x < this.step * 4) {
+					this.x += this.step;
+				}				
+				break;
+			case 'up':
+				if (this.y > 0) {
+					this.y -= this.jump;
+				}				
+				break;
+			case 'down':
+				if (this.y < this.step * 5) {
+					this.y += this.jump;
+				}				
+				break;
+		}
+	}
+
+	reset(){
+
+	}
+}
+
+const player = new Hero();
 
 
 // Now instantiate your objects.
