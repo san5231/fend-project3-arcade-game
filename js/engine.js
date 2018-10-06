@@ -14,7 +14,7 @@
  */
 
 var Engine = (function(global) {
-    /* Predefine the variables we'll be using within this scope,
+/* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
@@ -22,7 +22,20 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        id;
+
+    const modal = document.querySelector("#modal");
+    const playAgainBtn = document.getElementById('play-again');
+
+    playAgainBtn.addEventListener('click', function(){
+        modal.style.display = 'none';
+        player.gameWon = false;
+        player.reset();
+        win.requestAnimationFrame(main);
+    });
+    
+
 
     canvas.width = 505;
     canvas.height = 606;
@@ -32,6 +45,7 @@ var Engine = (function(global) {
      * and handles properly calling the update and render methods.
      */
     function main() {
+
         /* Get our time delta information which is required if your game
          * requires smooth animation. Because everyone's computer processes
          * instructions at different speeds we need a constant value that
@@ -55,7 +69,16 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+         if (player.gameWon == true) {
+            win.cancelAnimationFrame(id);
+            modal.style.display = 'block';
+
+         }
+         else
+         {
+            id = win.requestAnimationFrame(main);
+         }
+            
     }
 
     /* This function does some initial setup that should only occur once,
@@ -93,7 +116,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        //player.update();
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -182,4 +205,6 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+
+
 })(this);

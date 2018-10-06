@@ -38,27 +38,42 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 // Hero class
+
 class Hero{
 	constructor() {
 	//properties
 	this.step = 101;
 	this.jump = 83;
 	this.startX = this.step * 2;
-	this.startY = this.step * 4 - 30;
+	this.startY = this.jump * 4 +55;
 	this.x = this.startX; 
 	this.y = this.startY;
 	this.sprite = 'images/char-boy.png';
+	this.gameWon = false;
 	}
 	//methods
-	update(){
 
+	update(){
+		//check collision of player and enemies
+		for(let enemy of allEnemies) {
+			if(this.y === enemy.y && enemy.x + enemy.step/2 > this.x && this.x + this.step/2 > enemy.x){
+				this.reset();
+			}
+		};
+		//check if the game win
+		
+		if(this.y == -28){
+			//game win, show model, play again
+			this.gameWon = true;
+		}
 	}
 
+	//render player on the page
 	render(){
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 	}
 	
-	
+	//handle the position according to player input
 	handleInput(input){
 		switch(input) {
 			case 'left':
@@ -85,7 +100,8 @@ class Hero{
 	}
 
 	reset(){
-
+		this.x = this.startX;
+		this.y = this.startY;
 	}
 }
 
@@ -94,10 +110,11 @@ const bug1 = new Enemy(-101*2, 0, 200);
 const bug2 = new Enemy(-101, 83, 150);
 const bug3 = new Enemy((-101*10),83, 300);
 const bug4 = new Enemy((-101*4), (83*2), 250);
+const bug5 = new Enemy((-101*4), 0, 100);
 const allEnemies = [];
 
-allEnemies.push(bug1, bug2, bug3, bug4);
-console.log(bug1,bug2,bug3,bug4)
+
+allEnemies.push(bug1, bug2, bug3, bug4, bug5);
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -117,3 +134,6 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
+

@@ -1,3 +1,36 @@
 body {
     text-align: center;
 }
+
+#modal {
+	background-color: rgba(185, 178, 178, 0.71);
+	display: none;
+	position: fixed;
+	text-align: center;
+	padding-top: 0px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+#congrad {
+	background-color: #fefefe;
+	width: 50%;
+	height: 30%;
+	margin: auto;
+	margin-top: 300px;
+	padding-top: 150px;
+}
+
+#play-again {
+	background-color: #00aaff;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	padding: 15px 45px;
+}
