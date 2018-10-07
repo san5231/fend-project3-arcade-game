@@ -50,6 +50,8 @@ class Hero{
 	this.y = this.startY;
 	this.sprite = 'images/char-boy.png';
 	this.gameWon = false;
+	this.hearts = document.querySelector('.hearts');
+
 	}
 	//methods
 
@@ -100,10 +102,14 @@ class Hero{
 	}
 
 	reset(){
+		this.hearts.removeChild(this.hearts.lastElementChild);
 		this.x = this.startX;
 		this.y = this.startY;
+
 	}
+
 }
+
 
 const player = new Hero();
 const bug1 = new Enemy(-101*2, 0, 200);

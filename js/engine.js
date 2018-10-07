@@ -24,7 +24,7 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime,
         id;
-
+    
     const modal = document.querySelector("#modal");
     const playAgainBtn = document.getElementById('play-again');
 
