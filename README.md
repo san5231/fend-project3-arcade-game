@@ -14,6 +14,7 @@ A arcade game clone let users move the hero by arrow keys preventing from collid
 - Download the repository
 - Extract the zip file and navigate to the folder of fend-project3-arcade-game
 - Open the index.html in the browser to play game.
+- Or use following link to play the game: https://san5231.github.io/fend-project3-arcade-game/
 
 ## Game Play
 
