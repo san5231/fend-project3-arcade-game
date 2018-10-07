@@ -115,6 +115,20 @@ class Hero{
 		this.y = this.startY;
 	}
 
+	startOver(){
+		this.x = this.startX;
+		this.y = this.startY;
+		if (this.heartNum < 5) {
+			for(let i = 0; i < 5 - this.heartNum; i++) {
+			let heart = document.createElement('li');
+			heart.innerHTML = `<i class="fas fa-heart"></i>`;
+			this.hearts.appendChild(heart);
+			}
+		}
+		this.heartNum = 5;
+		
+	}
+
 }
 
 

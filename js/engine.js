@@ -25,14 +25,19 @@ var Engine = (function(global) {
         lastTime,
         id;
 
-    const modal = document.querySelector("#modal-win");
-    const playAgainBtn = document.getElementById('play-again');
+    const modalWin = document.querySelector("#modal-win");
+    const modalOver = document.querySelector("#modal-over");
+    const playAgainBtn = document.querySelectorAll('.play-again');
 
-    playAgainBtn.addEventListener('click', function(){
-        modal.style.display = 'none';
+    playAgainBtn.forEach(function(){
+    	addEventListener('click', function(){
+        modalWin.style.display = 'none';
+        modalOver.style.display = 'none';
         player.gameWon = false;
-        player.reset();
+        player.gameOver = false;
+        player.startOver();
         win.requestAnimationFrame(main);
+    	});
     });
     
 
@@ -71,12 +76,12 @@ var Engine = (function(global) {
          */
          if (player.gameWon === true) {
             win.cancelAnimationFrame(id);
-            modal.style.display = 'block';
+            modalWin.style.display = 'block';
 
          }
          else if (player.gameOver === true) {
          	win.cancelAnimationFrame(id);
-
+         	modalOver.style.display = 'block';
          }
 
          else

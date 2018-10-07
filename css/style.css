@@ -1,8 +1,10 @@
 body {
     text-align: center;
+    width: 100;
+
 }
 
-#modal {
+#modal-win {
 	background-color: rgba(185, 178, 178, 0.71);
 	display: none;
 	position: fixed;
@@ -24,7 +26,7 @@ body {
 	padding-top: 150px;
 }
 
-#play-again {
+.play-again {
 	background-color: #00aaff;
 	border: none;
 	color: white;
@@ -35,3 +37,42 @@ body {
 	padding: 15px 45px;
 }
 
+#modal-over {
+	background-color: rgba(185, 178, 178, 0.71);
+	display: none;
+	position: fixed;
+	text-align: center;
+	padding-top: 0px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+#lose {
+	background-color: #fefefe;
+	width: 50%;
+	height: 30%;
+	margin: auto;
+	margin-top: 300px;
+	padding-top: 100px;
+}
+
+.fa-skull {
+	color: #F41313;
+	font-size: 3em;
+	margin: 0.5em;
+}
+
+.hearts li {
+	list-style: none;
+	display: inline-block;
+	border: 0.1em;
+}
+
+.fa-heart {
+	color: #EF1919;
+	font-size: 2em;
+
+}
