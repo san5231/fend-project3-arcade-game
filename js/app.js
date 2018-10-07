@@ -51,7 +51,8 @@ class Hero{
 	this.sprite = 'images/char-boy.png';
 	this.gameWon = false;
 	this.hearts = document.querySelector('.hearts');
-
+	this.heartNum = 5;
+	this.gameOver = false;
 	}
 	//methods
 
@@ -67,6 +68,12 @@ class Hero{
 		if(this.y == -28){
 			//game win, show model, play again
 			this.gameWon = true;
+		}
+
+		//check if the game over
+
+		if (this.heartNum === 0){
+			this.gameOver = true;
 		}
 	}
 
@@ -103,9 +110,9 @@ class Hero{
 
 	reset(){
 		this.hearts.removeChild(this.hearts.lastElementChild);
+		this.heartNum -= 1;
 		this.x = this.startX;
 		this.y = this.startY;
-
 	}
 
 }

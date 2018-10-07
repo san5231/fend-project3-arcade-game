@@ -24,8 +24,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime,
         id;
-    
-    const modal = document.querySelector("#modal");
+
+    const modal = document.querySelector("#modal-win");
     const playAgainBtn = document.getElementById('play-again');
 
     playAgainBtn.addEventListener('click', function(){
@@ -69,11 +69,16 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-         if (player.gameWon == true) {
+         if (player.gameWon === true) {
             win.cancelAnimationFrame(id);
             modal.style.display = 'block';
 
          }
+         else if (player.gameOver === true) {
+         	win.cancelAnimationFrame(id);
+
+         }
+
          else
          {
             id = win.requestAnimationFrame(main);
